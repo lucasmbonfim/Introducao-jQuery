@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introdução a jQuery</title>
+  <style>
+    #movido {
+      position: absolute;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Introdução a jQuery</h1>
+  <button id="botao">Clique aqui</button>
+  <span id="msg">Mensagem</span>
+  <p id="emcima">Passe o mouse neste local!</p>
+
+  <h2>Titulo</h2>
+  <button id="trocarCor">Clique aqui</button>
+
+  <p id="sumido">Este texto vai sumir suavemente quando o botão abaixo for clicado</p>
+  <button id="sumidor">Sumidor</button>
+  <button id="aparecedor">Aparecedor</button>
+
+  <p id="pequeno">Clique em mim para me fazer crescer</p>
+
+  <button id="movedor">Mover texto</button>
+  <br>
+  <span id="movido">Ambulante</span>
+
+  <script src="jquery-3.6.0.min.js"></script>
+  <script>
+    $("#movedor").click(function () {
+      $("#movido").animate({ "top": "+=50px" }, "slow") //left positivo move p direita, negativo move p esquerda 
+    })
+
+    $("#pequeno").click(function () {
+      $(this).animate({ "fontSize": "50px" }, "slow");
+    })
+
+    $("#sumidor").click(function () {
+      $("#sumido").hide("slow");
+    })
+
+    $("#aparecedor").click(function () {
+      $("#sumido").show("slow");
+    })
+
+    $("#trocarCor").click(function () {
+      $("h2").css("color", "blue");
+    })
+
+    $("#botao").click(function () {
+      $("#msg").text("Alo jQuery");
+      $("h1").text("Título novo");
+      $(this).text("Você clicou em mim!");
+    })
+
+    $("#emcima").mouseover(function () {
+      $(this).text("Agora remova o mouse daqui!");
+    })
+
+    $("#emcima").mouseout(function () {
+      $(this).text("Ufa, ainda bem que saiu daqui!");
+    })
+    /*const button = document.querySelector("button");
+    const span = document.querySelector("span");
+
+    function mudarMensagem() {
+      span.textContent = "Alo mundo";
+    }
+
+    button.onclick = mudarMensagem;
+    */
+  </script>
+</body>
+
+</html>
